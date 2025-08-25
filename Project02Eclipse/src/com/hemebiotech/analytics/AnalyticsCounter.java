@@ -37,4 +37,12 @@ public class AnalyticsCounter {
 		System.err.println("Error reading symptoms: " + e.getMessage());
 		}
 	}
+
+	public Map<String, Integer> countSymptoms(ISymptomReader reader) throws IOException {
+		return reader.readSymptoms(); // Appel à l'interface ISymptomReader pour obtenir les symptômes
+	}
+
+	public void writeSymptoms(Map<String, Integer> symptomCounts, ISymptomWriter writer) throws IOException {
+		writer.writeSymptoms(symptomCounts); // Appel à l'interface ISymptomWriter pour écrire les symptômes
+	}
 }
