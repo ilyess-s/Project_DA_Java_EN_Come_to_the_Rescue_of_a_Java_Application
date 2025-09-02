@@ -6,20 +6,20 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        //Définit le chemin du fichier pour les symptômes
+        //Defile file path
         String inputFilePath = "Project02Eclipse/symptoms.txt";
         String outputFilePath = "Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/results.out";
 
-        //Instancie les objets nécessaires
+        //Creates required objects
         ISymptomReader symptomReader = new FileSymptomReader(inputFilePath); // Lire à partir du fichier
         ISymptomWriter symptomWriter = new FileSymptomWriter(outputFilePath); // Écrire dans un autre fichier
         AnalyticsCounter analyticsCounter = new AnalyticsCounter(); // Instance pour traiter les données
 
         try {
-            // Étape 1 : Lire les symptômes depuis le fichier
+            //read symptoms from file
             Map<String, Integer> symptomCounts = analyticsCounter.countSymptoms(symptomReader);
 
-            // Étape 2 : Écrire le rapport des symptômes dans un fichier
+            //write symptoms to file
             analyticsCounter.writeSymptoms(symptomCounts, symptomWriter);
 
             // Message indiquant que le traitement est terminé

@@ -6,7 +6,7 @@
 
 public class AnalyticsCounter {
 	public static void main(String[] args) throws IOException {
-		// first get input
+		//Read symptoms from file
 		ISymptomReader reader = new FileSymptomReader("Project02Eclipse/symptoms.txt");
 		try {
 			Map<String, Integer> symptoms = reader.readSymptoms();
@@ -15,6 +15,7 @@ public class AnalyticsCounter {
 		 	int rashCount = 0;
 		 	int pupilCount = 0;
 
+			 //scans the file for iterations and the 3 symptoms above
 			for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
 				System.out.println(entry.getKey() + ": " + entry.getValue());
 
@@ -32,6 +33,13 @@ public class AnalyticsCounter {
 		System.out.println("Headache count: " + headacheCount);
 		System.out.println("Rash count: " + rashCount);
 		System.out.println("Dilated pupils count: " + pupilCount);
+
+		//Writes the aforementioned symptoms into a file
+		ISymptomWriter writer = new FileSymptomWriter("Project02Eclipse/results.out");
+		writer.writeSymptoms((symptoms));
+
+		//confirms that the file has been successfully written
+		System.out.println("Symptoms successfully written to results.out");
 
 	} catch (IOException e) {
 		System.err.println("Error reading symptoms: " + e.getMessage());
